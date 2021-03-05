@@ -13,7 +13,7 @@ class Conection
                 $config['connection'] . ';dbname=' . $config['name'],
                 $config['username'],
                 $config['password'],
-                $config['options']
+                $config['option']
             );
         } catch (PDOException $e) {
             die('cod not connect');
