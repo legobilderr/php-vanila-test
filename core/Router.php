@@ -3,7 +3,10 @@
 class Router
 {
 
-    protected $routes = [];
+    public $routes = [
+        'GET' => [],
+        'POST' => []
+    ];
 
 
 
@@ -32,5 +35,16 @@ class Router
         };
 
         throw new Exception('No route dfined for this url');
+    }
+
+
+    public function get($uri, $controller)
+    {
+        $this->routes['GET'][$uri] = $controller;
+    }
+
+    public function post($uri, $controller)
+    {
+        $this->routes['POST'][$uri] = $controller;
     }
 }
