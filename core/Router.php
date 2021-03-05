@@ -24,10 +24,6 @@ class Router
     }
 
 
-    public function define($routes)
-    {
-        $this->routes = $routes;
-    }
 
 
     public function direct($uri, $requestType)

@@ -1,3 +1,8 @@
 <?php
 
-var_dump("You typed {$_POST['name']}.");
+$app['query']->insert('users', [
+    'name' => $_POST['name']
+]);
+
+
+header('Location: /');

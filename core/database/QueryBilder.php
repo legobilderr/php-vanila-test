@@ -12,12 +12,36 @@ class QueryBilder
 
 
 
-    public function selectAll($table, $intoClass)
+    public function selectAll($table)
     {
         $statment = $this->pdo->prepare("select * from {$table}");
 
         $statment->execute();
 
-        return $tasksFromDb = $statment->fetchAll(PDO::FETCH_CLASS, $intoClass);
+        return $tasksFromDb = $statment->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    public function insert($table, $parameters)
+    {
+
+        $columns = implode(', ', array_keys($parameters));
+
+
+        $values = ':' . implode(', :', array_keys($parameters));
+
+        $sqlString = sprintf(
+            'insert into %s (%s) values (%s)',
+            $table,
+            $columns,
+            $values
+        );
+
+        try {
+            $query = $this->pdo->prepare($sqlString);
+
+            $query->execute($parameters);
+        } catch (Exception $e) {
+            die('Something went wrong.');
+        }
     }
 }
