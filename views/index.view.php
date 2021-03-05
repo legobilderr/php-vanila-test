@@ -4,7 +4,7 @@
 
 <ul>
     <?php foreach ($users as $user) : ?>
-        <li><?= $user->name; ?></li>
+        <li><?= $user->Name; ?></li>
     <?php endforeach; ?>
 </ul>
 

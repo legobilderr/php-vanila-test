@@ -1,8 +1,9 @@
 <?php
 
-$tasksFromDb = $app['query']->selectAll('todos', 'Task');
+$tasksFromDb = App::get('query')->selectAll('todos', 'Task');
 
-$users = $app['query']->selectAll('users');
+$users = App::get('query')->selectAll('users');
+
 
 
 require 'views/index.view.php';
