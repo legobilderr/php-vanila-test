@@ -1,21 +1,18 @@
 <?php
 
+namespace App\Controllers;
 
 class PagesController
 {
     public function home()
     {
 
-        $tasksFromDb = App::get('query')->selectAll('todos', 'Task');
 
-        $users = App::get('query')->selectAll('users');
 
         $greeting = 'Hello world ';
 
 
         return view('index', [
-            'users' => $users,
-            'tasks' => $tasksFromDb,
             'greeting' => $greeting,
         ]);
     }
