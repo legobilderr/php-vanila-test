@@ -4,14 +4,13 @@
 
 <ul>
     <?php foreach ($users as $user) : ?>
-        <li><?= $user->Name; ?></li>
+        <li><?= $user->FirstName; ?></li>
     <?php endforeach; ?>
 </ul>
 
 <form method="POST" action="/users">
     <input name='name'></input>
     <button type='submit'>Submit</button>
-
 </form>
 
 <?php require('partials/footer.php'); ?>

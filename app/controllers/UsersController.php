@@ -6,6 +6,10 @@ use App\Core\App;
 
 class UsersController
 {
+    public function avatar()
+    {
+        var_dump($_REQUEST);
+    }
 
     public function index()
     {

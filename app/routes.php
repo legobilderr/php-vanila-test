@@ -15,4 +15,6 @@ $router->get('contact', 'PagesController@contact');
 
 $router->get('users', 'UsersController@index');
 
+$router->post('user', 'UsersController@avatar');
+
 $router->post('users', 'UsersController@store');
