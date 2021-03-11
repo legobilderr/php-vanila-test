@@ -63,6 +63,21 @@ form button {
   cursor: pointer;
 }
 
+table {
+  width: 70%;
+  margin: auto;
+  font-family: sans-serif;
+}
+
+tbody {
+  padding: 10px;
+  list-style-type: none;
+}
+
+.Fullname {
+  display: flex;
+}
+
 #Form2 {
   left: 450px;
 }
@@ -117,5 +132,3 @@ form button {
   outline: none;
   background: transparent;
 }
-
-

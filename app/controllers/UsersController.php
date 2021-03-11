@@ -28,6 +28,35 @@ class UsersController
 
     public function  share()
     {
+        if (isset($_FILES['file']['name'])) {
+
+            /* Getting file name */
+            $filename = $_FILES['file']['name'];
+
+            /* Location */
+            $location = "/public/img/" . $filename;
+            $imageFileType = pathinfo($location, PATHINFO_EXTENSION);
+            $imageFileType = strtolower($imageFileType);
+
+            /* Valid extensions */
+            $valid_extensions = array("jpg", "jpeg", "png");
+
+            $response = 0;
+            /* Check file extension */
+            if (in_array(strtolower($imageFileType), $valid_extensions)) {
+                /* Upload file */
+                if (move_uploaded_file($_FILES['file']['tmp_name'], $location)) {
+                    $response = $location;
+                }
+            }
+
+            echo $response;
+            exit;
+        }
+
+        var_dump($_FILES);
+
+        move_uploaded_file($_FILES['avatar'], "/public/img/" . $_POST['avatar']);
         App::get('query')->reinsert($_SESSION['Email'], 'users', [
             'Company' => $_POST['Company'],
             'Position' => $_POST['Position'],

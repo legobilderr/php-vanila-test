@@ -60,9 +60,6 @@ class QueryBilder
         $sqlString = "UPDATE $table SET $columns[0]='$values[0]' ,$columns[1]='$values[1]',$columns[2]='$values[2]',$columns[3]='$values[3]'  WHERE Email = '$email' ";
 
 
-
-        var_dump($sqlString);
-
         try {
             $query = $this->pdo->prepare($sqlString);
 
