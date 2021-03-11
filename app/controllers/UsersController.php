@@ -4,12 +4,16 @@ namespace App\Controllers;
 
 use App\Core\App;
 
+session_start();
+
 class UsersController
 {
+
+
     public function ajax()
     {
-
-        App::get('query')->insert('Users', [
+        $_SESSION['Email'] = $_POST['Email'];
+        App::get('query')->insert('users', [
             'FirstName' => $_POST['FirstName'],
             'LastNAme' => $_POST['LastNAme'],
             'birthday' => $_POST['birthday'],
@@ -22,16 +26,16 @@ class UsersController
     }
 
 
-    public function  share(){
-        var_dump($_POST);
-        App::get('query')->insert('Users', [
+    public function  share()
+    {
+        App::get('query')->reinsert($_SESSION['Email'], 'users', [
             'Company' => $_POST['Company'],
             'Position' => $_POST['Position'],
             'About' => $_POST['About'],
             'avatar' => $_POST['avatar'],
         ]);
 
-//        return redirect('users');
+        //        return redirect('users');
     }
 
     public function index()
