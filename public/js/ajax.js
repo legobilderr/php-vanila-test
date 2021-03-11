@@ -20,8 +20,12 @@ $(document).ready(function(){
 
         var createUser=$.ajax({
             url:form.attr('action'),
-            data: form.serialize(),
-            method: form.attr('method')
+            data: new FormData(this),
+            enctype: form.attr('enctype'),
+            method: form.attr('method'),
+            cache:false,
+            contentType: false,
+            processData: false,
         });
         createUser.done(function (data){
             console.log('ok2');

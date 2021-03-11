@@ -17,7 +17,7 @@
             </td>
             <td class='Fullname'>
                 <li><?= $user->FirstName; ?></li>
-                <li><?= $user->LastNAme; ?></li>
+                <li><?= $user->LastName; ?></li>
             </td>
             <td>
                 <li><?= $user->ReportSubject; ?></li>

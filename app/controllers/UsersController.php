@@ -13,7 +13,7 @@ class UsersController
     public function ajax()
     {
         $_SESSION['Email'] = $_POST['Email'];
-        App::get('query')->insert('users', [
+        App::get('query')->insert('Users', [
             'FirstName' => $_POST['FirstName'],
             'LastNAme' => $_POST['LastNAme'],
             'birthday' => $_POST['birthday'],
@@ -28,40 +28,18 @@ class UsersController
 
     public function  share()
     {
-        if (isset($_FILES['file']['name'])) {
 
-            /* Getting file name */
-            $filename = $_FILES['file']['name'];
-
-            /* Location */
-            $location = "/public/img/" . $filename;
-            $imageFileType = pathinfo($location, PATHINFO_EXTENSION);
-            $imageFileType = strtolower($imageFileType);
-
-            /* Valid extensions */
-            $valid_extensions = array("jpg", "jpeg", "png");
-
-            $response = 0;
-            /* Check file extension */
-            if (in_array(strtolower($imageFileType), $valid_extensions)) {
-                /* Upload file */
-                if (move_uploaded_file($_FILES['file']['tmp_name'], $location)) {
-                    $response = $location;
-                }
-            }
-
-            echo $response;
-            exit;
+        if (move_uploaded_file($_FILES['avatar']['tmp_name'], __DIR__.'/../../public/img/'. $_FILES["avatar"]['name'])) {
+            echo "Uploaded";
+        } else {
+            echo "File was not uploaded";
         }
-
-        var_dump($_FILES);
-
-        move_uploaded_file($_FILES['avatar'], "/public/img/" . $_POST['avatar']);
-        App::get('query')->reinsert($_SESSION['Email'], 'users', [
+//        move_uploaded_file( $_FILES["avatar"]["tmp_name"], "/public/img/" . $_FILES['avatar']['name']);
+        App::get('query')->reinsert($_SESSION['Email'], 'Users', [
             'Company' => $_POST['Company'],
             'Position' => $_POST['Position'],
-            'About' => $_POST['About'],
-            'avatar' => $_POST['avatar'],
+            'AboutMe' => $_POST['About'],
+            'avatar' => $_FILES['avatar']['name'],
         ]);
 
         //        return redirect('users');
@@ -72,12 +50,12 @@ class UsersController
         $greeting = 'Hello world ';
 
 
-        $tasksFromDb = App::get('query')->selectAll('todos', 'Task');
+//        $tasksFromDb = App::get('query')->selectAll('todos', 'Task');
 
-        $users = App::get('query')->selectAll('users');
+        $users = App::get('query')->selectAll('Users');
         return view('users', [
             'users' => $users,
-            'tasks' => $tasksFromDb,
+//            'tasks' => $tasksFromDb,
             'greeting' => $greeting,
         ]);
     }

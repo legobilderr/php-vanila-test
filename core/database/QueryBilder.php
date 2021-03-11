@@ -56,6 +56,8 @@ class QueryBilder
         // "select * FROM %s WHERE Email = '%s'",
         if ($values[3] == NULL) {
             $values[3] = '/public/img/rick.png';
+        }else{
+            $values[3] = "/public/img/$values[3]";
         };
         $sqlString = "UPDATE $table SET $columns[0]='$values[0]' ,$columns[1]='$values[1]',$columns[2]='$values[2]',$columns[3]='$values[3]'  WHERE Email = '$email' ";
 
