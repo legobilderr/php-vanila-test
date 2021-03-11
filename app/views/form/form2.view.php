@@ -1,4 +1,4 @@
-<form id='Form2' method="POST" action="/user">
+<form id='Form2' method="POST" action="/share">
     <h3>Social Links</h3>
     <input type="text" placeholder="Company" id="Company" name="Company">
 

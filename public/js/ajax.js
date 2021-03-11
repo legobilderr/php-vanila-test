@@ -11,9 +11,5 @@ $(document).ready(function(){
             console.log('ok');
             console.log(data);
         });
-        createUser.fail(function (data){
-            console.log('no ok');
-            console.log(data);
-        });
     })
 })

@@ -6,9 +6,32 @@ use App\Core\App;
 
 class UsersController
 {
-    public function avatar()
+    public function ajax()
     {
-        var_dump($_REQUEST);
+
+        App::get('query')->insert('Users', [
+            'FirstName' => $_POST['FirstName'],
+            'LastNAme' => $_POST['LastNAme'],
+            'birthday' => $_POST['birthday'],
+            'ReportSubject' => $_POST['ReportSubject'],
+            'country' => $_POST['country'],
+            'phone_num' => $_POST['phone_num'],
+            'Email' => $_POST['Email'],
+
+        ]);
+    }
+
+
+    public function  share(){
+        var_dump($_POST);
+        App::get('query')->insert('Users', [
+            'Company' => $_POST['Company'],
+            'Position' => $_POST['Position'],
+            'About' => $_POST['About'],
+            'avatar' => $_POST['avatar'],
+        ]);
+
+//        return redirect('users');
     }
 
     public function index()
@@ -28,8 +51,8 @@ class UsersController
 
     public function store()
     {
-        App::get('query')->insert('users', [
-            'name' => $_POST['name']
+        App::get('query')->insert('Users', [
+            'FirstName' => $_POST['FirstName']
         ]);
 
 

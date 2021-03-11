@@ -14,7 +14,11 @@ $router->get('contact', 'PagesController@contact');
 
 
 $router->get('users', 'UsersController@index');
-
-$router->post('user', 'UsersController@avatar');
-
 $router->post('users', 'UsersController@store');
+
+$router->post('user', 'UsersController@ajax');
+
+
+$router->post('share', 'UsersController@share');
+
+

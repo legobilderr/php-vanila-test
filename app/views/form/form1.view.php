@@ -11,13 +11,12 @@
 
     <?php require_once(__DIR__ . '/../partials/countryList.php'); ?>
 
-    <input type="tel" onkeyup="checkParams()" name="phone_num" placeholder=" enter phone +1 (555) 555-5555 " id="phone_num" name='phone_num' />
+    <input type="tel" onkeyup="checkParams()" placeholder=" enter phone +1 (555) 555-5555 " id="phone_num" name='phone_num' />
     <!-- pattern="[\+]\d{1}[\(]\d{3}[\)]\d{3}[\-]\d{4}"  -->
 
     <input type="text" onkeyup="checkParams()" placeholder="Email" id="Email" name='Email' required>
 
     <div class="btn-box">
-        <button class="btn btn-primary"> Create</button>
 
         <button type="submit" id="Next1" disabled>
             Next

@@ -118,9 +118,4 @@ form button {
   background: transparent;
 }
 
-iframe {
-  margin: auto;
-  display: flex;
-  width: 500px;
-  height: 450px;
-}
+
