@@ -22,6 +22,7 @@ Back1.onclick = function () {
     progress.style.width = "160px"
     localStorage.setItem('form1Values', JSON.stringify(Form1.style.left));
     localStorage.setItem('form2Values', JSON.stringify(Form2.style.left));
+    localStorage.setItem('progress', JSON.stringify( progress.style.width));
     
 }
 

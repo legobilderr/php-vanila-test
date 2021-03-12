@@ -5,7 +5,7 @@ $(document).ready(function(){
     $('#Form1').css({'left': position});
     var position = JSON.parse(localStorage.getItem("form2Values"));
     $('#Form2').css({'left': position});
-    var position = JSON.parse(localStorage.getItem("profress"));
+    var position = JSON.parse(localStorage.getItem("progress"));
     $('#progress').css({'width': position});
 
 
@@ -20,7 +20,7 @@ $(document).ready(function(){
         var progress='360px';
         localStorage.setItem('form1Values', JSON.stringify(form1));
         localStorage.setItem('form2Values', JSON.stringify(form2));
-        localStorage.setItem('profress', JSON.stringify(progress));
+        localStorage.setItem('progress', JSON.stringify(progress));
         
         localStorage.setItem("flag","set");
         var form = $(this);

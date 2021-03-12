@@ -3,7 +3,6 @@
 
 class QueryBilder
 {
-    public $errors = [];
     protected $pdo;
 
     public function __construct($pdo)
@@ -44,8 +43,8 @@ class QueryBilder
 
             $query->execute($parameters);
         } catch (Exception $e) {
-
-            die('Something went wrong.');
+            echo $e->errorInfo[2] . 'this email already exists ';
+            die('  Something went wrong.');
         }
     }
 
