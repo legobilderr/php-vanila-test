@@ -1,6 +1,5 @@
 <?php require('partials/head.php'); ?>
 <?php require('map.view.php'); ?>
-<?php require('shareButtons.view.php'); ?>
 
 <div class="container">
     <div class="step-row">
@@ -13,6 +12,8 @@
     <?php require('form/form1.view.php'); ?>
 
     <?php require('form/form2.view.php'); ?>
+
+    <?php require('shareButtons.view.php'); ?>
 
 
 

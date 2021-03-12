@@ -1,6 +1,17 @@
 $(document).ready(function(){
+
+
+    var position = JSON.parse(localStorage.getItem("form1Values"));
+    $('#Form1').css({'left': position});
+    var position = JSON.parse(localStorage.getItem("form2Values"));
+    $('#Form2').css({'left': position});
+
+
     $('#Form1').on('submit',function(event){
         event.preventDefault();
+        
+
+
         var form = $(this);
         var createUser=$.ajax({
             url:form.attr('action'),
