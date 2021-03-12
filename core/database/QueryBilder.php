@@ -3,6 +3,7 @@
 
 class QueryBilder
 {
+    public $errors = [];
     protected $pdo;
 
     public function __construct($pdo)
@@ -43,6 +44,7 @@ class QueryBilder
 
             $query->execute($parameters);
         } catch (Exception $e) {
+
             die('Something went wrong.');
         }
     }
@@ -52,11 +54,10 @@ class QueryBilder
         $columns =  array_keys($parameters);
 
         $values =  array_values($parameters);
-        //        select *from Users  ORDER BY id DESC LIMIT 1;
-        // "select * FROM %s WHERE Email = '%s'",
+
         if ($values[3] == NULL) {
             $values[3] = '/public/img/rick.png';
-        }else{
+        } else {
             $values[3] = "/public/img/$values[3]";
         };
         $sqlString = "UPDATE $table SET $columns[0]='$values[0]' ,$columns[1]='$values[1]',$columns[2]='$values[2]',$columns[3]='$values[3]'  WHERE Email = '$email' ";
@@ -67,7 +68,7 @@ class QueryBilder
 
             $query->execute($parameters);
         } catch (Exception $e) {
-            die('Something went wrong.');
+            die("Something went wrong.");
         }
     }
 }

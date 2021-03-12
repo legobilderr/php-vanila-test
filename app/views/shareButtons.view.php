@@ -4,7 +4,9 @@ use App\Core\App;
 
 ?>
 
+
 <div class='charePage' id='share'>
+    <h3>Tell about uss</h3>
     <div class="row share">
         <a href="https://www.facebook.com/sharer/sharer.php?u=<?= App::get('config')['link'] ?>" onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
             <img src="/public/img/fb.png" alt="facebook" width="80" height='80'>
@@ -14,8 +16,10 @@ use App\Core\App;
         </a>
     </div>
     <div class="row">
-        <div class="col">
-            <a href="/users" class="float-right">All members</a>
+        <div class="btn-box">
+            <button class="float-right" onclick="window.location.href='/users';">
+                All members
+            </button>
         </div>
     </div>
 </div>

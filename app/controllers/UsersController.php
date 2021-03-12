@@ -29,20 +29,18 @@ class UsersController
     public function  share()
     {
 
-        if (move_uploaded_file($_FILES['avatar']['tmp_name'], __DIR__.'/../../public/img/'. $_FILES["avatar"]['name'])) {
+        if (move_uploaded_file($_FILES['avatar']['tmp_name'], __DIR__ . '/../../public/img/' . $_FILES["avatar"]['name'])) {
             echo "Uploaded";
         } else {
             echo "File was not uploaded";
         }
-//        move_uploaded_file( $_FILES["avatar"]["tmp_name"], "/public/img/" . $_FILES['avatar']['name']);
+
         App::get('query')->reinsert($_SESSION['Email'], 'Users', [
             'Company' => $_POST['Company'],
             'Position' => $_POST['Position'],
             'AboutMe' => $_POST['About'],
             'avatar' => $_FILES['avatar']['name'],
         ]);
-
-        //        return redirect('users');
     }
 
     public function index()
@@ -50,12 +48,11 @@ class UsersController
         $greeting = 'Hello world ';
 
 
-//        $tasksFromDb = App::get('query')->selectAll('todos', 'Task');
+
 
         $users = App::get('query')->selectAll('Users');
         return view('users', [
             'users' => $users,
-//            'tasks' => $tasksFromDb,
             'greeting' => $greeting,
         ]);
     }

@@ -15,6 +15,7 @@ body {
   border-radius: 8px;
   position: relative;
   overflow: hidden;
+  transition: 0.5s;
 }
 
 h3 {
@@ -57,7 +58,7 @@ form input {
   text-align: center;
 }
 
-form button {
+button {
   width: 100px;
   height: 35px;
   margin: 0 10px;
@@ -73,6 +74,8 @@ table {
   width: 70%;
   margin: auto;
   font-family: sans-serif;
+  background: rgb(211, 208, 208);
+  border-radius: 8px;
 }
 
 tbody {
@@ -80,8 +83,17 @@ tbody {
   list-style-type: none;
 }
 
+table tr {
+  text-align: center;
+}
+table tr li {
+  padding-left: 10px;
+}
+
 .Fullname {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #Form2 {
@@ -91,7 +103,9 @@ tbody {
 #share {
   left: 450px;
 }
-
+.charePage {
+  text-align: center;
+}
 .step-row {
   width: 360px;
   height: 40px;
