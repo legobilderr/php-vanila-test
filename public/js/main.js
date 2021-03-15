@@ -12,8 +12,7 @@ let Back2 = document.getElementById("Back2");
 
 let progress = document.getElementById("progress");
 
-
-
+const email= document.getElementById('Email');
 
 
 Back1.onclick = function () {
@@ -38,8 +37,8 @@ Next2.onclick = function (e) {
 }
 
 
-function checkParams() {
-    
+function checkParams(params) {
+    alert(params);
 }
 
 

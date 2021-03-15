@@ -10,7 +10,7 @@ App::bind('query', new QueryBilder(
     Conection::make(App::get('config')['database'])
 ));
 
-// App::bind('email', $_POST['Email']);
+
 
 function view($name, $data = null)
 {

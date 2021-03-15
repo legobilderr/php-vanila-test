@@ -10,8 +10,13 @@ $(document).ready(function(){
 
 
     $('#Form1').on('submit',function(event){
+
+
         event.preventDefault();
-        
+
+
+
+
         $('#Form1').css({'left': '-450px'});
         $('#Form2').css({'left': '40px'});
         $('#progress').css({'width': '360px'});
@@ -21,11 +26,11 @@ $(document).ready(function(){
         localStorage.setItem('form1Values', JSON.stringify(form1));
         localStorage.setItem('form2Values', JSON.stringify(form2));
         localStorage.setItem('progress', JSON.stringify(progress));
-        
+
         localStorage.setItem("flag","set");
         var form = $(this);
         let data= $('#Form1').serializeArray();
-    
+
         $.each(data, function(i, obj){
             localStorage.setItem(obj.name,obj.value);
         });
@@ -36,11 +41,21 @@ $(document).ready(function(){
             data: form.serialize(),
             method: form.attr('method')
         });
+
         createUser.done(function (data){
-            console.log('ajax send');
             console.log(data);
+            var response = JSON.parse(data);
+            $('.erorMassege').text(response.errors).slideDown();
+            if (response > 0){
+                stop;
+            }
         });
+
     })
+
+
+
+
 
     if (localStorage.getItem('flag')=='set'){
         let data= $('#Form1').serializeArray();

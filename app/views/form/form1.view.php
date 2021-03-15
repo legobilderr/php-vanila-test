@@ -13,7 +13,9 @@
 
     <input type="tel" placeholder=" enter phone +1 (555) 555-5555 " id="phone_num" name='phone_num' pattern="([\+](1\s|\B)?\(?[0-9]{3}[-\s)]\s?[0-9]{3}[-\s][0-9]{4}|[0-9]{10})" required>
 
-    <input type="text" onkeyup="checkParams()" placeholder="Email" id="Email" name='Email' required>
+    <input type="text"  placeholder="Email" id="Email" name='Email' required>
+
+    <div class="erorMassege" style="display: none"></div>
 
     <div class="btn-box">
 

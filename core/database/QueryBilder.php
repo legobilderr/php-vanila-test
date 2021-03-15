@@ -70,4 +70,24 @@ class QueryBilder
             die("Something went wrong.");
         }
     }
+
+    public function emailCheck($table, $parameters){
+
+        $columns =  array_keys($parameters);
+
+
+        $values =  array_values($parameters);
+
+
+        $sqlString="SELECT * FROM $table WHERE $columns[0] = '$values[0]'";
+
+        $query = $this->pdo->prepare($sqlString);
+        $query->execute($parameters);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+        if ($result > 0){
+            return false;
+        }
+        return true;
+    }
 }

@@ -12,21 +12,29 @@ class UsersController
 
     public function ajax()
     {
-        $_SESSION['Email'] = $_POST['Email'];
-        App::get('query')->insert('Users', [
-            'FirstName' => $_POST['FirstName'],
-            'LastNAme' => $_POST['LastNAme'],
-            'birthday' => $_POST['birthday'],
-            'ReportSubject' => $_POST['ReportSubject'],
-            'country' => $_POST['country'],
-            'phone_num' => $_POST['phone_num'],
-            'Email' => $_POST['Email'],
+        if ($this->checkEmail($_POST['Email'])) {
+            $_SESSION['Email'] = $_POST['Email'];
+            App::get('query')->insert('Users', [
+                'FirstName' => $_POST['FirstName'],
+                'LastNAme' => $_POST['LastNAme'],
+                'birthday' => $_POST['birthday'],
+                'ReportSubject' => $_POST['ReportSubject'],
+                'country' => $_POST['country'],
+                'phone_num' => $_POST['phone_num'],
+                'Email' => $_POST['Email'],
+                'avatar' => '/public/img/rick.png'
 
-        ]);
+            ]);
+        }else{
+            $errors="This email already using";
+            echo json_encode([
+                'errors'=>$errors
+            ]);
+        }
     }
 
 
-    public function  share()
+    public function share()
     {
 
         if (move_uploaded_file($_FILES['avatar']['tmp_name'], __DIR__ . '/../../public/img/' . $_FILES["avatar"]['name'])) {
@@ -48,8 +56,6 @@ class UsersController
         $greeting = 'Hello world ';
 
 
-
-
         $users = App::get('query')->selectAll('Users');
         return view('users', [
             'users' => $users,
@@ -65,5 +71,12 @@ class UsersController
 
 
         return redirect('users');
+    }
+
+    public function checkEmail($Email)
+    {
+        App::get('query')->emailCheck('Users', [
+            'Email' => $Email
+        ]);
     }
 }

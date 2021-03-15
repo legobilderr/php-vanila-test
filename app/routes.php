@@ -18,6 +18,8 @@ $router->post('users', 'UsersController@store');
 
 $router->post('user', 'UsersController@ajax');
 
+$router->get('checkEmail', 'UsersController@ajax');
+
 
 $router->post('share', 'UsersController@share');
 
