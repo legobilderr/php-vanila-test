@@ -80,9 +80,11 @@ $(document).ready(function(){
             contentType: false,
             processData: false,
         });
+        
         createUser.done(function (data){
+            var response = JSON.parse(data);
+            $('.float-right').text('all members ('+response.count+')').slideDown();
             console.log('ok2');
-            console.log(data);
         });
     })
     

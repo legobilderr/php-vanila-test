@@ -38,9 +38,9 @@ class UsersController
     {
 
         if (move_uploaded_file($_FILES['avatar']['tmp_name'], __DIR__ . '/../../public/img/' . $_FILES["avatar"]['name'])) {
-            echo "Uploaded";
+            // echo "Uploaded";
         } else {
-            echo "File was not uploaded";
+            // echo "File was not uploaded";
         }
 
         App::get('query')->reinsert($_SESSION['Email'], 'Users', [
@@ -49,7 +49,16 @@ class UsersController
             'AboutMe' => $_POST['About'],
             'avatar' => $_FILES['avatar']['name'],
         ]);
+
+        $this->countUsers('Users');
+        $count = $this->countUsers('Users')["COUNT(*)"];
+
+        echo json_encode([
+            'count' => $count
+        ]);
     }
+
+
 
     public function index()
     {
@@ -78,5 +87,10 @@ class UsersController
         return App::get('query')->emailCheck('Users', [
             'Email' => $Email
         ]);
+    }
+
+    public function countUsers($Email)
+    {
+        return App::get('query')->countMembers('Users');
     }
 }

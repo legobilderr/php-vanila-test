@@ -76,9 +76,7 @@ class QueryBilder
 
         $columns =  array_keys($parameters);
 
-
         $values =  array_values($parameters);
-
 
         $sqlString = "SELECT * FROM $table WHERE $columns[0] = '$values[0]'";
 
@@ -86,12 +84,22 @@ class QueryBilder
         $query->execute($parameters);
         $result = $query->fetch(PDO::FETCH_ASSOC);
 
-
-
         if ($result) {
             return false;
         } else {
             return true;
         }
+    }
+
+    public function countMembers($table)
+    {
+
+        $sqlString = "SELECT COUNT(*) FROM $table";
+
+
+        $query = $this->pdo->prepare($sqlString);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result;
     }
 }

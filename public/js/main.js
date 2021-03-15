@@ -37,8 +37,8 @@ Next2.onclick = function (e) {
 }
 
 
-function checkParams(params) {
-    alert(params);
-}
+// function checkParams(params) {
+//     alert(params);
+// }
 
 
