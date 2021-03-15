@@ -90,6 +90,10 @@ table tr li {
   padding-left: 10px;
 }
 
+.nameTabs {
+  padding: 10px;
+}
+
 .Fullname {
   display: flex;
   align-items: center;

@@ -71,7 +71,8 @@ class QueryBilder
         }
     }
 
-    public function emailCheck($table, $parameters){
+    public function emailCheck($table, $parameters)
+    {
 
         $columns =  array_keys($parameters);
 
@@ -79,15 +80,18 @@ class QueryBilder
         $values =  array_values($parameters);
 
 
-        $sqlString="SELECT * FROM $table WHERE $columns[0] = '$values[0]'";
+        $sqlString = "SELECT * FROM $table WHERE $columns[0] = '$values[0]'";
 
         $query = $this->pdo->prepare($sqlString);
         $query->execute($parameters);
         $result = $query->fetch(PDO::FETCH_ASSOC);
 
-        if ($result > 0){
+
+
+        if ($result) {
             return false;
+        } else {
+            return true;
         }
-        return true;
     }
 }

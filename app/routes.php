@@ -22,5 +22,3 @@ $router->get('checkEmail', 'UsersController@ajax');
 
 
 $router->post('share', 'UsersController@share');
-
-

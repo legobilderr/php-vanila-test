@@ -14,19 +14,6 @@ $(document).ready(function(){
 
         event.preventDefault();
 
-
-
-
-        $('#Form1').css({'left': '-450px'});
-        $('#Form2').css({'left': '40px'});
-        $('#progress').css({'width': '360px'});
-        var form1='-450px';
-        var form2='40px';
-        var progress='360px';
-        localStorage.setItem('form1Values', JSON.stringify(form1));
-        localStorage.setItem('form2Values', JSON.stringify(form2));
-        localStorage.setItem('progress', JSON.stringify(progress));
-
         localStorage.setItem("flag","set");
         var form = $(this);
         let data= $('#Form1').serializeArray();
@@ -43,12 +30,22 @@ $(document).ready(function(){
         });
 
         createUser.done(function (data){
-            console.log(data);
+            if (data){
             var response = JSON.parse(data);
             $('.erorMassege').text(response.errors).slideDown();
-            if (response > 0){
-                stop;
-            }
+            return false;
+        }    
+            else{
+                $('#Form1').css({'left': '-450px'});
+                $('#Form2').css({'left': '40px'});
+                $('#progress').css({'width': '360px'});
+                var form1='-450px';
+                var form2='40px';
+                var progress='360px';
+                localStorage.setItem('form1Values', JSON.stringify(form1));
+                localStorage.setItem('form2Values', JSON.stringify(form2));
+                localStorage.setItem('progress', JSON.stringify(progress));
+                console.log('ok')}
         });
 
     })

@@ -25,10 +25,10 @@ class UsersController
                 'avatar' => '/public/img/rick.png'
 
             ]);
-        }else{
-            $errors="This email already using";
+        } else {
+            $errors = "This email already using";
             echo json_encode([
-                'errors'=>$errors
+                'errors' => $errors
             ]);
         }
     }
@@ -75,7 +75,7 @@ class UsersController
 
     public function checkEmail($Email)
     {
-        App::get('query')->emailCheck('Users', [
+        return App::get('query')->emailCheck('Users', [
             'Email' => $Email
         ]);
     }

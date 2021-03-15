@@ -5,6 +5,7 @@
     <input type="text" placeholder="Position" id="Position" name="Position">
 
     <input type="text" placeholder="About me" id="About" name="About">
+    <!-- <textarea id="About" name="About" rows="4"> -->
 
     <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
 
