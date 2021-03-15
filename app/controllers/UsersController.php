@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
+
 use App\Core\App;
+use App\models\UsersModel;
 
 session_start();
 
@@ -12,6 +14,17 @@ class UsersController
 
     public function ajax()
     {
+        $registerModel = new UsersModel();
+        $registerModel->loadData($_POST);
+
+        if ($registerModel->validate() && $registerModel->register()) {
+            return 'siccess';
+        }
+
+
+
+
+
         if ($this->checkEmail($_POST['Email'])) {
             $_SESSION['Email'] = $_POST['Email'];
             App::get('query')->insert('Users', [
@@ -28,7 +41,8 @@ class UsersController
         } else {
             $errors = "This email already using";
             echo json_encode([
-                'errors' => $errors
+                'errors' => $errors,
+                'models' => $registerModel
             ]);
         }
     }

@@ -31,8 +31,14 @@ $(document).ready(function(){
 
         createUser.done(function (data){
             if (data){
+                console.log(data);
             var response = JSON.parse(data);
             $('.erorMassege').text(response.errors).slideDown();
+            $('.erorMassegeFirstName').text(response.models.errors.FirstName).slideDown();
+            $('.erorMassegeLastNAme').text(response.models.errors.LastNAme).slideDown();
+            $('.erorMassegeReportSubject').text(response.models.errors.ReportSubject).slideDown();
+            $('.erorMassegePhone').text(response.models.errors.phone_num).slideDown();
+            $('.erorMassegeEmail').text(response.models.errors.Email).slideDown();
             return false;
         }    
             else{
