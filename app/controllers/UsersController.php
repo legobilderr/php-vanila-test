@@ -21,11 +21,10 @@ class UsersController
             return 'siccess';
         }
 
+        $notExistEmail = $this->checkEmail($_POST['Email']);
 
 
-
-
-        if ($this->checkEmail($_POST['Email'])) {
+        if ($notExistEmail === true && $registerModel->errors === null) {
             $_SESSION['Email'] = $_POST['Email'];
             App::get('query')->insert('Users', [
                 'FirstName' => $_POST['FirstName'],
@@ -39,7 +38,11 @@ class UsersController
 
             ]);
         } else {
-            $errors = "This email already using";
+
+            $errors = "";
+            if ($notExistEmail === false) {
+                $errors = "This email already using";
+            }
             echo json_encode([
                 'errors' => $errors,
                 'models' => $registerModel
@@ -71,7 +74,6 @@ class UsersController
             'count' => $count
         ]);
     }
-
 
 
     public function index()

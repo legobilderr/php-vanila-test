@@ -14,7 +14,7 @@
 
     <?php require_once(__DIR__ . '/../partials/countryList.php'); ?>
 
-    <input type="tel" placeholder=" enter phone +1 (555) 555-5555 " id="phone_num" name='phone_num' pattern="([\+](1\s|\B)?\(?[0-9]{3}[-\s)]\s?[0-9]{3}[-\s][0-9]{4}|[0-9]{10})" required>
+    <input type="tel" placeholder=" enter phone +1 (555) 555-5555 " id="phone_num" name='phone_num'  required>
     <div class="erorMassegePhone" style="display: none"></div>
 
 
